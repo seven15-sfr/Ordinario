@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h> 
+#include <ctype.h>  
 #include "altas.h"
 
-int altas(struct Persona **ptrFrente, struct Persona **ptrFinal)
+int altas(struct Persona **ptrFrente, struct Persona **ptrFinal, const char *carreraElegida)
 {
     struct Persona *P = NULL;
     struct Alumno *A = NULL;
@@ -13,22 +15,22 @@ int altas(struct Persona **ptrFrente, struct Persona **ptrFinal)
     if(P == NULL){
         b = 0;
     }else{
-        A = nuevoAlumno();
+        // Pasamos tanto el nombre como la carrera ya procesada
+        A = nuevoAlumno(P->nombre, carreraElegida); 
         if(A == NULL){
             b = 0;
-            free(P->nombre); // Liberamos el nombre dinámico primero
+            free(P->nombre); 
             free(P);
         } else {
             P->ptrAlum = A;
-            P->ptrSig = NULL; // Al ser el último, su siguiente es NULL
+            P->ptrSig = NULL; 
 
-           
             if(*ptrFinal == NULL) {
-                *ptrFrente = P; // Si está vacía, el frente es el nuevo nodo
+                *ptrFrente = P; 
             } else {
-                (*ptrFinal)->ptrSig = P; // El último actual apunta al nuevo
+                (*ptrFinal)->ptrSig = P; 
             }
-            *ptrFinal = P; // El nuevo nodo ahora es el final de la cola
+            *ptrFinal = P; 
         }
     }
     return b;
@@ -43,7 +45,7 @@ struct Persona* nuevaPersona(void)
     if (P->nombre == NULL) { free(P); return NULL; }
 
     printf("Nombre: ");
-    scanf(" %[^\n]", P->nombre); // %[^\n] permite capturar nombres con espacios
+    scanf(" %[^\n]", P->nombre); 
     printf("Edad: ");
     scanf("%d", &P->edad);
     printf("Genero M o F: ");
@@ -57,19 +59,30 @@ struct Persona* nuevaPersona(void)
     return P;
 }
 
-struct Alumno* nuevoAlumno(void)
+struct Alumno* nuevoAlumno(const char *nombrePersona, const char *carreraElegida)
 {
     struct Alumno *A = (struct Alumno*)malloc(sizeof(struct Alumno));
     if (A == NULL) return NULL;
 
     printf("Matricula: ");
     scanf(" %s", A->matricula);
-    printf("Carrera: ");
-    scanf(" %s", A->carrera);
+
+    // Copiamos directamente la carrera que se determinó en el main
+    strcpy(A->carrera, carreraElegida);
+    printf("Carrera asignada: %s\n", A->carrera);
+
     printf("Semestre: ");
     scanf("%d", &A->semestre);
-    printf("Correo: ");
-    scanf(" %s", A->correo);
+
+    char dosLetras[3] = {0}; 
+    strncpy(dosLetras, nombrePersona, 2);
+    
+    dosLetras[0] = tolower((unsigned char)dosLetras[0]);
+    dosLetras[1] = tolower((unsigned char)dosLetras[1]);
+
+    sprintf(A->correo, "%s%s@unsij.edu.mx", dosLetras, A->matricula);
+    
+    printf("Correo institucional asignado: %s\n", A->correo);
 
     return A;
 }
