@@ -7,26 +7,7 @@ void ejecutarSubmenu(struct Persona *ptrFrente) {
     if (ptrFrente == NULL) {
         printf("La base de datos esta vacia \n");
         return;
-    }
-
-    int opSub;
-    do {
-        opSub = submenu(); 
-        switch (opSub) {
-            case 1:
-                modificarDatosAlumno(ptrFrente);
-                break;
-            case 2:
-                registrarCalificaciones(ptrFrente);
-                break;
-            case 3:
-                printf("Regresando al menu principal \n");
-                break;
-            default:
-                printf("Opcion no valida \n");
-                break;
-        }
-    } while (opSub != 3); // Se repite hasta que elijan la opción 3 
+    }  
 }
 
 /* Registrar calificaciones con opción de regresar */
