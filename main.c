@@ -35,7 +35,7 @@ int main(void){
                 printf("Seleccione una opcion valida \n");
                 break;
         }
-    } while (op != 5); // Cambiado a 5 para salir
+    } while (op != 5); 
       
     return 0;
 }
