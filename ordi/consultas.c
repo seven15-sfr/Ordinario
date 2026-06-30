@@ -9,7 +9,7 @@ void ejecutarConsultas(struct Persona *ptrFrente) {
         return;
     }
 
-    int opc = mostar(); /* Despliega el menú de consultas de menu.c */
+    int opc = mostar(); // Desplegamos el menú de consultas de menu.c
     
     switch (opc) {
         case 1: 
@@ -37,14 +37,12 @@ void ejecutarConsultas(struct Persona *ptrFrente) {
     }
 }
 
-/* Función auxiliar para imprimir la matriz 5x5 simulando las materias */
 void imprimirMateriasUCalificaciones(struct Alumno *alumno) {
     printf("Materias y calificaciones \n");
     for (int i = 0; i < 5; i++) {
         float sumaMateria = 0.0;
         printf("\nMateria %d:\n", i + 1);
         
-        /* Imprime las primeras 4 unidades (Parciales) */
         for (int j = 0; j < 4; j++) {
             printf("  Parcial %d  : %.2f\n", j + 1, alumno->calif[i][j]);
             sumaMateria += alumno->calif[i][j];
@@ -60,7 +58,6 @@ void imprimirMateriasUCalificaciones(struct Alumno *alumno) {
     }
 }
 
-/* Función para imprimir todo el perfil del nodo */
 void imprimirAlumnoCompleto(struct Persona *persona) {
     printf("Nombre      : %s\n", persona->nombre);
     printf("Edad        : %d\n", persona->edad);
@@ -78,7 +75,6 @@ void imprimirAlumnoCompleto(struct Persona *persona) {
     }
 }
 
-/* 1. Mostrar toda la lista */
 void mostrarTodaLaLista(struct Persona *ptrFrente) {
     struct Persona *aux = ptrFrente;
     int contador = 1;
@@ -90,7 +86,6 @@ void mostrarTodaLaLista(struct Persona *ptrFrente) {
     }
 }
 
-/* 2. Filtrar por Carrera con opción de regresar */
 void mostrarPorCarrera(struct Persona *ptrFrente) {
     char carrera[5];
     printf("\nIngrese la carrera a buscar (o escriba 'r' para regresar): ");
@@ -117,7 +112,6 @@ void mostrarPorCarrera(struct Persona *ptrFrente) {
     }
 }
 
-/* 3. Filtrar por Semestre con opción de regresar */
 void mostrarPorSemestre(struct Persona *ptrFrente) {
     int semestre;
     printf("\nIngrese el semestre a buscar (digite 0 para regresar): ");
@@ -144,7 +138,6 @@ void mostrarPorSemestre(struct Persona *ptrFrente) {
     }
 }
 
-/* 4. Filtrar por Carrera y Semestre con opción de regresar */
 void mostrarPorCarreraSemestre(struct Persona *ptrFrente) {
     char carrera[5];
     int semestre;
@@ -172,7 +165,6 @@ void mostrarPorCarreraSemestre(struct Persona *ptrFrente) {
     }
 }
 
-/* 5. Buscar Persona por Nombre con opción de regresar */
 void buscarPorNombre(struct Persona *ptrFrente) {
     char nombre[50];
     printf("\nIngrese el nombre completo a buscar (o 'r' para regresar): ");
@@ -196,7 +188,6 @@ void buscarPorNombre(struct Persona *ptrFrente) {
     }
 }
 
-/* 6. Buscar Alumno por Matrícula con opción de regresar */
 void buscarPorMatricula(struct Persona *ptrFrente) {
     char matricula[10];
     printf("\nIngrese la matricula del alumno (o 'r' para regresar): ");
@@ -211,7 +202,7 @@ void buscarPorMatricula(struct Persona *ptrFrente) {
         if (aux->ptrAlum != NULL && strcmp(aux->ptrAlum->matricula, matricula) == 0) {
             imprimirAlumnoCompleto(aux);
             encontrado = 1;
-            break; /* La matrícula es única, detenemos la búsqueda */
+            break; 
         }
         aux = aux->ptrSig;
     }
