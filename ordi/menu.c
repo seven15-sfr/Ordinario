@@ -37,3 +37,16 @@ int submenu(void) {
     scanf("%d", &sub);
     return sub;
 }
+
+int menuCarreras(void) {
+    int opcion;
+    printf("\n--- SELECCIONE LA CARRERA ---\n");
+    printf("1: Ingenieria en desarrollo de software\n");
+    printf("2: Ingenieria forestal\n");
+    printf("3: Licenciatura en administracion turistica\n");
+    printf("4: Licenciatura en ciencias ambientales\n");
+    printf("5: Licenciatura en biologia\n");
+    printf("Seleccione la carrera: ");
+    scanf("%d", &opcion);
+    return opcion;
+}
