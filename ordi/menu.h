@@ -6,5 +6,6 @@
 int menuPrincipal(void);
 int mostar(void);
 int submenu(void);
+int menuCarreras(void); 
 
 #endif
