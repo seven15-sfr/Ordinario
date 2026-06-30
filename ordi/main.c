@@ -10,6 +10,7 @@
 int main(void){
     int op;
     int opc; 
+    int opSub;
     struct Persona *ptrFrente = NULL;
     struct Persona *ptrFinal = NULL;
 
@@ -19,9 +20,11 @@ int main(void){
             case 1:
                 altas(&ptrFrente, &ptrFinal);
                 break;
+                
             case 2:
                 bajas(&ptrFrente, &ptrFinal);
                 break;
+
             case 3:
                 menuConsultas(ptrFrente);
                 do{
@@ -57,7 +60,26 @@ int main(void){
 
             case 4:
                 ejecutarSubmenu(ptrFrente);
+                  do {
+                        opSub = submenu(); 
+                        switch (opSub) {
+                            case 1:
+                                modificarDatosAlumno(ptrFrente);
+                                break;
+                            case 2:
+                                registrarCalificaciones(ptrFrente);
+                                break;
+                            case 3:
+                                printf("Regresando al menu principal \n");
+                                break;
+                            default:
+                                printf("Opcion no valida \n");
+                                break;
+                        }
+                    } while (opSub != 3); // Se repite hasta que elijan la opción 3 
+                
                 break;
+
             case 5:
                 vaciarCola(&ptrFrente, &ptrFinal);
                 printf("Saliendo del sistema de calificaciones \n");
