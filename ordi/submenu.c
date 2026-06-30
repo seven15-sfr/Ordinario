@@ -26,10 +26,9 @@ void ejecutarSubmenu(struct Persona *ptrFrente) {
                 printf("Opcion no valida \n");
                 break;
         }
-    } while (opSub != 3); /* Se repite hasta que elijan la opción 3 */
+    } while (opSub != 3); 
 }
 
-/* Registrar calificaciones con opción de regresar */
 void registrarCalificaciones(struct Persona *ptrFrente) {
     char matBuscar[10];
     printf("Ingrese la matricula del alumno para asignar calificaciones: ");
@@ -42,7 +41,6 @@ void registrarCalificaciones(struct Persona *ptrFrente) {
         if (ptrActual->ptrAlum != NULL && strcmp(ptrActual->ptrAlum->matricula, matBuscar) == 0) {
             encontrado = 1;
             
-            /* INTERFAZ DE CONFIRMACIÓN / REGRESAR */
             char opRegresar;
             printf("Registro encontrado\n");
             printf("Alumno: %s\n", ptrActual->nombre);
@@ -51,7 +49,7 @@ void registrarCalificaciones(struct Persona *ptrFrente) {
 
             if (opRegresar == 'r' || opRegresar == 'R') {
                 printf("\nOperacion cancelada. Regresando \n");
-                return; /* Sale de la función inmediatamente y vuelve al submenú */
+                return; 
             }
 
             printf("\nRegistrando matriz de calificaciones (5 Materias x 5 Unidades):\n");
@@ -73,7 +71,6 @@ void registrarCalificaciones(struct Persona *ptrFrente) {
     }
 }
 
-/* Modificar datos con opción de regresar */
 void modificarDatosAlumno(struct Persona *ptrFrente) {
     char matBuscar[10];
     printf("\nIngrese la matricula del alumno a modificar: ");
@@ -86,7 +83,6 @@ void modificarDatosAlumno(struct Persona *ptrFrente) {
         if (ptrActual->ptrAlum != NULL && strcmp(ptrActual->ptrAlum->matricula, matBuscar) == 0) {
             encontrado = 1;
             
-            /* INTERFAZ DE CONFIRMACIÓN / REGRESAR */
             char opRegresar;
             printf("\n[Registro Encontrado] Alumno: %s\n", ptrActual->nombre);
             printf("¿Desea proceder con la modificacion o prefiere regresar? (m = Modificar / r = Regresar): ");
@@ -94,7 +90,7 @@ void modificarDatosAlumno(struct Persona *ptrFrente) {
 
             if (opRegresar == 'r' || opRegresar == 'R') {
                 printf("\nOperacion cancelada. Regresando...\n");
-                return; /* Sale de la función inmediatamente y vuelve al submenú */
+                return; 
             }
 
             int opcionMod;
