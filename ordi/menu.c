@@ -40,7 +40,7 @@ int submenu(void) {
 
 int menuCarreras(void) {
     int opcion;
-    printf("\n--- SELECCIONE LA CARRERA ---\n");
+    printf("-    SELECCIONE LA CARRERA \n");
     printf("1: Ingenieria en desarrollo de software\n");
     printf("2: Ingenieria forestal\n");
     printf("3: Licenciatura en administracion turistica\n");
