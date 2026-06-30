@@ -3,7 +3,7 @@
 
 #include "struct.h"
 
-void ejecutarConsultas(struct Persona *ptrFrente);
+void menuConsultas(struct Persona *ptrFrente);
 void imprimirMateriasUCalificaciones(struct Alumno *alumno);
 void imprimirAlumnoCompleto(struct Persona *persona);
 void mostrarTodaLaLista(struct Persona *ptrFrente);
