@@ -19,13 +19,12 @@ int main(void){
         op = menuPrincipal(); 
         switch (op) {
             case 1: {
-                // --- AGREGADO: SELECCIÓN DE CARRERA EN EL MAIN ---
                 char carreraSeleccionada[5] = "S/C"; 
                 int opCarrera = menuCarreras(); // Llamamos al menú de carreras
                 
                 switch(opCarrera) {
                     case 1:
-                        strcpy(carreraSeleccionada, "IDS"); // Ing. en Desarrollo de Software
+                        strcpy(carreraSeleccionada, "IDSSI"); // Ing. en Desarrollo de Software
                         break;
                     case 2:
                         strcpy(carreraSeleccionada, "IF");  // Ing. Forestal
@@ -40,7 +39,7 @@ int main(void){
                         strcpy(carreraSeleccionada, "LB");  // Lic. en Biología
                         break;
                     default:
-                        printf("Opcion no valida. Se asignara 'S/C' (Sin Carrera).\n");
+                        printf("Opcion no valida \n");
                         strcpy(carreraSeleccionada, "S/C");
                         break;
                 }
