@@ -26,9 +26,10 @@ void ejecutarSubmenu(struct Persona *ptrFrente) {
                 printf("Opcion no valida \n");
                 break;
         }
-    } while (opSub != 3); 
+    } while (opSub != 3); // Se repite hasta que elijan la opción 3 
 }
 
+/* Registrar calificaciones con opción de regresar */
 void registrarCalificaciones(struct Persona *ptrFrente) {
     char matBuscar[10];
     printf("Ingrese la matricula del alumno para asignar calificaciones: ");
@@ -41,18 +42,19 @@ void registrarCalificaciones(struct Persona *ptrFrente) {
         if (ptrActual->ptrAlum != NULL && strcmp(ptrActual->ptrAlum->matricula, matBuscar) == 0) {
             encontrado = 1;
             
+            // INTERFAZ DE CONFIRMACIÓN / REGRESAR
             char opRegresar;
             printf("Registro encontrado\n");
             printf("Alumno: %s\n", ptrActual->nombre);
-            printf("¿Desea continuar con el registro de calificaciones o prefiere regresar? ( C = Continuar / R = Regresar): ");
+            printf("¿Desea continuar con el registro de calificaciones o prefiere regresar?  C = Continuar / R = Regresa): ");
             scanf(" %c", &opRegresar);
 
             if (opRegresar == 'r' || opRegresar == 'R') {
-                printf("\nOperacion cancelada. Regresando \n");
-                return; 
+                printf("Operacion cancelada. Regresando \n");
+                return; // Salimos de la función y volemos al submenú
             }
 
-            printf("\nRegistrando matriz de calificaciones (5 Materias x 5 Unidades):\n");
+            printf("Registrando matriz de calificaciones :\n");
             for (int i = 0; i < 5; i++) {
                 printf("  -> Materia %d:\n", i + 1);
                 for (int j = 0; j < 5; j++) {
@@ -60,7 +62,7 @@ void registrarCalificaciones(struct Persona *ptrFrente) {
                     scanf("%f", &ptrActual->ptrAlum->calif[i][j]);
                 }
             }
-            printf("\n¡Matriz de calificaciones guardada exitosamente!\n");
+            printf("Matriz de calificaciones guardada exitosamente \n");
             break;
         }
         ptrActual = ptrActual->ptrSig;
@@ -71,9 +73,10 @@ void registrarCalificaciones(struct Persona *ptrFrente) {
     }
 }
 
+/* Modificar datos con opción de regresar */
 void modificarDatosAlumno(struct Persona *ptrFrente) {
     char matBuscar[10];
-    printf("\nIngrese la matricula del alumno a modificar: ");
+    printf("Ingrese la matricula del alumno a modificar: ");
     scanf(" %s", matBuscar);
 
     struct Persona *ptrActual = ptrFrente;
@@ -83,14 +86,16 @@ void modificarDatosAlumno(struct Persona *ptrFrente) {
         if (ptrActual->ptrAlum != NULL && strcmp(ptrActual->ptrAlum->matricula, matBuscar) == 0) {
             encontrado = 1;
             
+            // Interfazas de confirmacion
             char opRegresar;
-            printf("\n[Registro Encontrado] Alumno: %s\n", ptrActual->nombre);
-            printf("¿Desea proceder con la modificacion o prefiere regresar? (m = Modificar / r = Regresar): ");
+            printf("Registro encontrado \n");
+            printf("Alumno: %s\n", ptrActual->nombre);
+            printf("¿Desea proceder con la modificacion o prefiere regresar? (m = Modificar   r = Regresar): ");
             scanf(" %c", &opRegresar);
 
             if (opRegresar == 'r' || opRegresar == 'R') {
-                printf("\nOperacion cancelada. Regresando...\n");
-                return; 
+                printf("Operacion cancelada \n");
+                return; // Salimos de la función inmediatamente y vuelve al submenú */
             }
 
             int opcionMod;
