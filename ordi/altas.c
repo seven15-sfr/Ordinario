@@ -22,7 +22,7 @@ int altas(struct Persona **ptrFrente, struct Persona **ptrFinal)
             P->ptrAlum = A;
             P->ptrSig = NULL; // Al ser el último, su siguiente es NULL
 
-            /* CORREGIDO: Lógica estricta de COLA (FIFO) */
+           
             if(*ptrFinal == NULL) {
                 *ptrFrente = P; // Si está vacía, el frente es el nuevo nodo
             } else {
@@ -42,15 +42,13 @@ struct Persona* nuevaPersona(void)
     P->nombre = (char*)malloc(50 * sizeof(char));
     if (P->nombre == NULL) { free(P); return NULL; }
 
-    /* CORREGIDO: Agregados espacios antes de los formatos de lectura (" %...") 
-       para limpiar el buffer y evitar que se salte campos */
     printf("Nombre: ");
-    scanf(" %[^\n]", P->nombre); /* %[^\n] permite capturar nombres con espacios */
+    scanf(" %[^\n]", P->nombre); // %[^\n] permite capturar nombres con espacios
     printf("Edad: ");
     scanf("%d", &P->edad);
     printf("Genero M o F: ");
     scanf(" %c", &P->genero);
-    printf("Fecha de nacimiento (DDMMAAAA): ");
+    printf("Fecha de nacimiento (DD-MM-AAAA): ");
     scanf(" %s", P->fn);
 
     P->ptrAlum = NULL;
